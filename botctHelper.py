@@ -1,57 +1,224 @@
 import random
 
 # Blood these are the available roles in the game
-script = [{"id":"clockmaker", "allianment":"townsfolk"},
-         {"id":"grandmother", "allianment":"townsfolk"},
-         {"id":"librarian", "allianment":"townsfolk"},
-         {"id":"empath", "allianment":"townsfolk"},
-         {"id":"fortune_teller", "allianment":"townsfolk"},
-         {"id":"exorcist", "allianment":"townsfolk"},
-         {"id":"flowergirl", "allianment":"townsfolk"},
-         {"id":"oracle", "allianment":"townsfolk"},
-         {"id":"undertaker", "allianment":"townsfolk"},
-         {"id":"artist", "allianment":"townsfolk"},
-         {"id":"slayer", "allianment":"townsfolk"},
-         {"id":"seamstress", "allianment":"townsfolk"},
-         {"id":"monk", "allianment":"townsfolk"},
-         {"id":"lunatic", "allianment":"townsfolk"},
-         {"id":"mutant", "allianment":"outsider"},
-         {"id":"sweetheart", "allianment":"outsider"},
-         {"id":"recluse", "allianment":"outsider"},
-         {"id":"godfather" , "allianment":"minion"},
-         {"id":"assassin", "allianment":"minion"},
-         {"id":"scarlet_woman", "allianment":"minion"},
-         {"id":"marionette" , "allianment":"minion"},
-         {"id":"no_dashii" , "allianment":"demon"},
-         {"id":"pukka", "allianment":"demon"},]
+script = [{"id": "clockmaker", "allianment": "townsfolk"},
+          {"id": "grandmother", "allianment": "townsfolk"},
+          {"id": "librarian", "allianment": "townsfolk"},
+          {"id": "empath", "allianment": "townsfolk"},
+          {"id": "fortune_teller", "allianment": "townsfolk"},
+          {"id": "exorcist", "allianment": "townsfolk"},
+          {"id": "flowergirl", "allianment": "townsfolk"},
+          {"id": "oracle", "allianment": "townsfolk"},
+          {"id": "undertaker", "allianment": "townsfolk"},
+          {"id": "artist", "allianment": "townsfolk"},
+          {"id": "slayer", "allianment": "townsfolk"},
+          {"id": "seamstress", "allianment": "townsfolk"},
+          {"id": "monk", "allianment": "townsfolk"},
+          {"id": "lunatic", "allianment": "townsfolk"},
+          {"id": "mutant", "allianment": "outsider"},
+          {"id": "sweetheart", "allianment": "outsider"},
+          {"id": "recluse", "allianment": "outsider"},
+          {"id": "godfather", "allianment": "minion"},
+          {"id": "assassin", "allianment": "minion"},
+          {"id": "scarlet_woman", "allianment": "minion"},
+          {"id": "marionette", "allianment": "minion"},
+          {"id": "no_dashii", "allianment": "demon"},
+          {"id": "pukka", "allianment": "demon"}, ]
 
-def gameinitiation():
+nightOrder = {
+    "firstNightOrder": [
+        "Lord of Typhon",
+        "Kazali",
+        "Apprentice",
+        "Barista",
+        "Bureaucrate",
+        "Thief",
+        "Boffin",
+        "Philosopher",
+        "Alchemist",
+        "Poppy Grower",
+        "Yaggababble",
+        "Magician",
+        "Minion Info",
+        "Snitch",
+        "Lunatic",
+        "Summoner",
+        "Demon Info & Bluffs",
+        "King",
+        "Sailor",
+        "Marionette",
+        "Engineer",
+        "Preacher",
+        "Lil' Monsta",
+        "Lleech",
+        "Xaan",
+        "Poisoner",
+        "Widow",
+        "Courtier",
+        "Wizard",
+        "Snake Charmer",
+        "Godfather",
+        "Organ Grinder",
+        "Devil's Advocate",
+        "Evil Twin",
+        "Witch",
+        "Cerenovus",
+        "Fearmonger",
+        "Harpy",
+        "Mezepheles",
+        "Pukka",
+        "Pixie",
+        "Huntsman",
+        "Damsel",
+        "Amnesiac",
+        "Washerwoman",
+        "Librarian",
+        "Investigator",
+        "Chef",
+        "Empath",
+        "Fortune Teller",
+        "Butler",
+        "Grandmother",
+        "Clockmaker",
+        "Dreamer",
+        "Seamstress",
+        "Steward",
+        "Knight",
+        "Noble",
+        "Balloonist",
+        "Shugenja",
+        "Village Idiot",
+        "Bounty Hunter",
+        "Nightwatchman",
+        "Cult Leader",
+        "Spy",
+        "Ogre",
+        "High Priestess",
+        "General",
+        "Chambermaid",
+        "Mathematician"
+    ],
+    "nightOrder": [
+        "Barista",
+        "Bone Collector",
+        "Bureaucrate",
+        "Harlot",
+        "Thief",
+        "Philosopher",
+        "Poppy Grower",
+        "Sailor",
+        "Engineer",
+        "Preacher",
+        "Xaan",
+        "Poisoner",
+        "Courtier",
+        "Inkeeper",
+        "Wizard",
+        "Gambler",
+        "Acrobat",
+        "Snake Charmer",
+        "Monk",
+        "Organ Grinder",
+        "Devil's Advocate",
+        "Witch",
+        "Cerenovus",
+        "Pit-Hag",
+        "Fearmonger",
+        "Harpy",
+        "Mezepheles",
+        "Scarlet Woman",
+        "Summoner",
+        "Lunatic",
+        "Exorcist",
+        "Lycanthrope",
+        "Legion",
+        "Imp",
+        "Zombuul",
+        "Pukka",
+        "Shabaloth",
+        "Po",
+        "Fang Gu",
+        "No Dashii",
+        "Vortox",
+        "Lord of Typhon",
+        "Vigormortis",
+        "Ojo",
+        "Al-Hadikhia",
+        "Lleech",
+        "Lil' Monsta",
+        "Yaggababble",
+        "Kazali",
+        "Assassin",
+        "Godfather",
+        "Gossip",
+        "Hatter",
+        "Barber",
+        "Sweetheart",
+        "Sage",
+        "Banshee",
+        "Professor",
+        "Choirboy",
+        "Huntsman",
+        "Damsel",
+        "Amnesiac",
+        "Farmer",
+        "Tinker",
+        "Moonchild",
+        "Grandmother",
+        "Ravenkeeper",
+        "Empath",
+        "Fortune Teller",
+        "Undertaker",
+        "Dreamer",
+        "Flowergirl",
+        "Town Crier",
+        "Oracle",
+        "Seamstress",
+        "Juggler",
+        "Balloonist",
+        "Village Idiot",
+        "King",
+        "Bounty Hunter",
+        "Nightwatchman",
+        "Cult Leader",
+        "Butler",
+        "Spy",
+        "High Priestess",
+        "General",
+        "Chambermaid",
+        "Mathematician"
+    ]
+}
 
+nightOrderLast = []
+
+
+def gameInit():
     players = []
     gameSetup = []
-    
+
     # Determin how many players are playing
     try:
         num_players = int(input("Enter the number of players: "))
         if num_players < 5 or num_players > 12:
             print("Number of players must be between 5 and 12.")
             return
-        
+
         print("Number of players:", num_players)
-         
+
     except ValueError:
         print("Invalid input. Please enter a number.")
+        0
         return
 
     try:
         for i in range(num_players):
-            playerName = input(f"Enter the name of player {i+1}: ")
+            playerName = input(f"Enter the name of player {i + 1}: ")
             players.append({"playerName": playerName})
     except Exception as e:
         print(f"An error occurred: {e}")
         return
-    
-    
+
     # Filter script based of roles
     demonRoles = [role for role in script if role['allianment'] == 'demon']
     minionRoles = [role for role in script if role['allianment'] == 'minion']
@@ -73,7 +240,7 @@ def gameinitiation():
     players.remove(minionPlayer)
     gameSetup.append(minionPlayer)
     print(f"- Minion: {minionPlayer}")
-    
+
     # Select a random outsider from players
     if num_players >= 7:
         selectedOutsider = random.choice(outsiderRoles)
@@ -82,18 +249,15 @@ def gameinitiation():
         players.remove(outsiderPlayer)
         gameSetup.append(outsiderPlayer)
         print(f"- Outsider: {outsiderPlayer}")
-    
+
     for player in players:
         # Select a random townsfolk from players
         selectedTownsfolk = random.choice(townsfolkRoles)
+        townsfolkRoles.remove(selectedTownsfolk)
         player['character'] = selectedTownsfolk
         gameSetup.append(player)
         print(f"- Townsfolk: {player}")
-    
-    print("Game setup:")
-    for player in gameSetup:
-        print(player)
-                
+
     # Create a markdown file with the player's role and all roles     
     # with open("Blood.md", "w") as md_file:
     #     md_file.write("# Blood on the Clocktower ")
@@ -103,11 +267,26 @@ def gameinitiation():
     #     md_file.write("\n## Script Roles\n")
     #     for role in Roles:
     #         md_file.write(f"- {role['id']}: {role['allianment']}\n")
-    
-    
+
     return players;
+
+
+def writeGamInit(playerRoles):
+    # Create a markdown file with the player's role and all roles     
+    with open("Blood.md", "w") as md_file:
+        md_file.write("# Blood on the Clocktower ")
+        md_file.write("\n## Player Roles\n")
+        for player in playerRoles:
+            md_file.write(f"- {player['playerName']}: {player['character']['id']}\n")
+        md_file.write("\n## Script Roles\n")
+        for role in script:
+            md_file.write(f"- {role['id']}: {role['allianment']}\n")
 
 
 ## Start the program
 if __name__ == "__main__":
-    playerRoles = gameinitiation()
+    playerRoles = gameInit()
+
+    writeGamInit(playerRoles)
+
+# print("blood money")

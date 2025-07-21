@@ -1,33 +1,13 @@
 import random
 import json
+import util
 
 # Blood these are the available roles in the game
-script = [{"id": "clockmaker", "allianment": "townsfolk"},
-          {"id": "grandmother", "allianment": "townsfolk"},
-          {"id": "librarian", "allianment": "townsfolk"},
-          {"id": "empath", "allianment": "townsfolk"},
-          {"id": "fortune_teller", "allianment": "townsfolk"},
-          {"id": "exorcist", "allianment": "townsfolk"},
-          {"id": "flowergirl", "allianment": "townsfolk"},
-          {"id": "oracle", "allianment": "townsfolk"},
-          {"id": "undertaker", "allianment": "townsfolk"},
-          {"id": "artist", "allianment": "townsfolk"},
-          {"id": "slayer", "allianment": "townsfolk"},
-          {"id": "seamstress", "allianment": "townsfolk"},
-          {"id": "monk", "allianment": "townsfolk"},
-          {"id": "lunatic", "allianment": "townsfolk"},
-          {"id": "mutant", "allianment": "outsider"},
-          {"id": "sweetheart", "allianment": "outsider"},
-          {"id": "recluse", "allianment": "outsider"},
-          {"id": "godfather", "allianment": "minion"},
-          {"id": "assassin", "allianment": "minion"},
-          {"id": "scarlet_woman", "allianment": "minion"},
-          {"id": "marionette", "allianment": "minion"},
-          {"id": "no_dashii", "allianment": "demon"},
-          {"id": "pukka", "allianment": "demon"}, ]
+script = util.loadScript("custom")
+print(script)
 
 # Open the night order and store it in a variable
-with open("night_order.json") as json_file:
+with open("../data/night_order.json") as json_file:
     nightOrder = json.load(json_file)
 
 def scriptNightOrderSetup(chosenScript):

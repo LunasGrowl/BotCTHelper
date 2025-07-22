@@ -1,13 +1,13 @@
 import random
 import json
-import util
+import utils
 
 # Blood these are the available roles in the game
-script = util.loadScript("custom")
+script = utils.loadScript("uncertainDeath")
 print(script)
 
 # Open the night order and store it in a variable
-with open("../data/night_order.json") as json_file:
+with open("./data/night_order.json") as json_file:
     nightOrder = json.load(json_file)
 
 def scriptNightOrderSetup(chosenScript):
